@@ -1,0 +1,816 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b1730">
+<meta name="description" content="AG Developers creates professional websites for businesses, shops, brands and creators.">
+<title>AG Developers | Digital Experiences</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --navy:#0b1730;
+  --navy2:#12294c;
+  --blue:#356dff;
+  --cyan:#77c7ff;
+  --ink:#17243b;
+  --muted:#64748b;
+  --line:#e6ebf3;
+  --paper:#ffffff;
+  --soft:#f5f8fd;
+  --green:#0e9f6e;
+  --radius:22px;
+  --shadow:0 18px 55px rgba(20,42,80,.09);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font-family:"DM Sans",sans-serif;color:var(--ink);background:#fff;line-height:1.7}
+h1,h2,h3,h4{font-family:Manrope,sans-serif;line-height:1.2;letter-spacing:-.7px}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+button,a{-webkit-tap-highlight-color:transparent}
+.container{width:min(1160px,calc(100% - 40px));margin:auto}
+.section{padding:100px 0}
+.section-head{max-width:660px;margin-bottom:44px}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--blue);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:2px;margin-bottom:17px}
+.eyebrow:before{content:"";height:2px;width:24px;background:currentColor}
+.section-head h2{font-size:clamp(30px,4vw,45px);margin-bottom:17px}
+.section-head p{color:var(--muted);font-size:16px}
+.btn{display:inline-flex;justify-content:center;align-items:center;gap:10px;padding:14px 21px;border-radius:12px;font-weight:700;border:1px solid transparent;cursor:pointer;transition:.25s}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--blue);color:white;box-shadow:0 8px 22px #356dff38}
+.btn-primary:hover{background:#2359e8;box-shadow:0 12px 26px #356dff4c}
+.btn-outline{border-color:#d9e2f0;background:white;color:var(--ink)}
+.btn-outline:hover{border-color:var(--blue);color:var(--blue)}
+.btn-white{background:#fff;color:var(--navy)}
+/* Navigation */
+header{position:sticky;top:0;z-index:100;background:#ffffffed;backdrop-filter:blur(18px);border-bottom:1px solid #e8edf5}
+.nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;font-family:Manrope,sans-serif;font-size:20px;font-weight:800;letter-spacing:-.8px}
+.brand-icon{width:42px;height:42px;display:grid;place-items:center;border-radius:13px;background:linear-gradient(145deg,#356dff,#173da9);color:white;font-size:15px;box-shadow:0 7px 16px #356dff30}
+.brand small{display:block;font-family:"DM Sans",sans-serif;color:#8090a8;font-size:10px;letter-spacing:2px;font-weight:700;line-height:1.2}
+.nav-links{display:flex;align-items:center;gap:29px}
+.nav-links a{font-size:13px;color:#526078;font-weight:600;transition:.2s}
+.nav-links a:hover{color:var(--blue)}
+.nav .btn{padding:11px 17px;font-size:13px}
+.menu-btn{display:none;border:1px solid var(--line);background:white;border-radius:10px;padding:9px 12px;font-size:20px;cursor:pointer}
+/* Hero */
+.hero{position:relative;overflow:hidden;background:linear-gradient(120deg,#f8faff 0%,#fff 52%,#edf4ff 100%);padding:83px 0 76px}
+.hero:before{content:"";position:absolute;width:530px;height:530px;border:1px solid #dce8ff;border-radius:50%;right:-130px;top:-250px}
+.hero:after{content:"";position:absolute;width:400px;height:400px;border:1px solid #e1eaff;border-radius:50%;right:-70px;top:-185px}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:65px}
+.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid #dbe7ff;background:#fff;padding:8px 13px;border-radius:40px;color:#365db6;font-size:12px;font-weight:700;margin-bottom:25px}
+.pulse{width:7px;height:7px;background:#25ba84;border-radius:50%;box-shadow:0 0 0 4px #25ba841b}
+.hero h1{font-size:clamp(42px,5.6vw,68px);letter-spacing:-2.8px;line-height:1.08;margin-bottom:24px;color:var(--navy)}
+.hero h1 span{background:linear-gradient(100deg,#356dff,#529ce8);background-clip:text;-webkit-background-clip:text;color:transparent}
+.hero-copy{font-size:17px;line-height:1.85;color:#64748b;max-width:510px;margin-bottom:30px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+.trust-row{display:flex;align-items:center;gap:14px;margin-top:32px;color:#66758c;font-size:12px}
+.trust-icons{display:flex}
+.trust-icons span{width:30px;height:30px;display:grid;place-items:center;border:2px solid white;border-radius:50%;background:#dce8ff;color:#234db0;font-weight:800;margin-left:-5px}
+.trust-icons span:first-child{margin-left:0;background:#d6f4e8;color:#167550}
+.trust-icons span:last-child{background:#ffe9d6;color:#9a5615}
+.trust-row strong{display:block;color:var(--navy);font-size:13px}
+.hero-visual{position:relative;min-width:0}
+.dashboard{position:relative;z-index:2;background:#fff;border:1px solid #e4eaf4;border-radius:22px;box-shadow:0 30px 80px #17335d20;overflow:hidden;transform:rotate(1deg)}
+.dash-top{height:49px;display:flex;align-items:center;gap:6px;padding:0 18px;border-bottom:1px solid #edf0f6}
+.dot{width:7px;height:7px;border-radius:50%;background:#e4e9f2}
+.dash-url{margin-left:12px;background:#f5f7fb;border-radius:6px;padding:5px 10px;font-size:9px;color:#93a0b4;flex:1}
+.dash-body{padding:24px}
+.dash-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:27px}
+.dash-logo{font-family:Manrope,sans-serif;font-weight:800;color:#12294c;font-size:13px}
+.dash-links{display:flex;gap:12px;font-size:8px;color:#75829a}
+.dash-hero{border-radius:15px;padding:27px 21px;background:linear-gradient(130deg,#0c1c39,#163b73);color:#fff;min-height:195px;position:relative;overflow:hidden}
+.dash-hero:after{content:"";position:absolute;width:190px;height:190px;border:1px solid #ffffff22;border-radius:50%;right:-36px;top:-40px;box-shadow:0 0 0 22px #ffffff08,0 0 0 44px #ffffff06}
+.dash-tag{font-size:8px;color:#91c7ff;letter-spacing:2px;font-weight:700}
+.dash-hero h3{font-size:24px;max-width:220px;margin:14px 0}
+.dash-hero p{font-size:9px;color:#c3d5f2;max-width:230px}
+.dash-mini-btn{display:inline-block;background:#fff;color:#17335e;padding:7px 10px;border-radius:5px;font-size:8px;font-weight:800;margin-top:15px}
+.dash-bottom{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px}
+.dash-card{border:1px solid #e9edf4;border-radius:10px;padding:12px 10px}
+.dash-card-icon{width:23px;height:23px;border-radius:7px;background:#eaf1ff;margin-bottom:10px}
+.dash-card strong{font-size:10px;display:block}
+.dash-card small{font-size:8px;color:#8b97aa}
+.float-note{position:absolute;z-index:3;background:white;border:1px solid #e8edf5;box-shadow:var(--shadow);border-radius:14px;padding:14px 17px}
+.float-note.one{left:-25px;bottom:45px}
+.float-note.two{right:-22px;top:65px}
+.float-note strong{display:block;font-size:13px;color:var(--navy)}
+.float-note small{font-size:10px;color:var(--muted)}
+.note-icon{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:9px;background:#e8f7ef;color:#12875a;margin-right:7px;font-weight:800}
+/* Stats */
+.stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:26px 16px;text-align:center;border-right:1px solid var(--line)}
+.stat:last-child{border:0}
+.stat strong{display:block;font-family:Manrope,sans-serif;font-size:19px;color:var(--navy)}
+.stat span{font-size:12px;color:var(--muted)}
+/* Services */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.service{border:1px solid var(--line);border-radius:18px;padding:29px 25px;background:#fff;transition:.25s}
+.service:hover{transform:translateY(-6px);border-color:#c9d8ff;box-shadow:var(--shadow)}
+.service-icon{height:49px;width:49px;display:grid;place-items:center;border-radius:14px;background:#edf3ff;color:var(--blue);font-size:22px;margin-bottom:22px}
+.service h3{font-size:19px;margin-bottom:11px}
+.service p{font-size:14px;color:var(--muted);margin-bottom:20px}
+.service a{font-size:13px;font-weight:800;color:var(--blue)}
+/* About band */
+.about-band{background:var(--soft)}
+.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;align-items:center;gap:70px}
+.about-visual{min-height:360px;border-radius:24px;padding:27px;background:linear-gradient(145deg,#10203e,#1b447b);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.about-visual:before,.about-visual:after{content:"";position:absolute;width:260px;height:260px;border:1px solid #ffffff20;border-radius:50%}
+.about-visual:after{width:350px;height:350px}
+.about-symbol{position:relative;z-index:1;text-align:center;color:#fff}
+.about-symbol .big-ag{font-family:Manrope,sans-serif;font-size:100px;font-weight:800;letter-spacing:-9px;line-height:1;background:linear-gradient(130deg,#fff,#86baff);background-clip:text;-webkit-background-clip:text;color:transparent}
+.about-symbol p{letter-spacing:4px;font-size:11px;color:#b9d8ff;font-weight:700}
+.about-copy h2{font-size:clamp(30px,4vw,43px);margin-bottom:18px}
+.about-copy>p{color:var(--muted);margin-bottom:27px}
+.check-list{list-style:none;display:grid;gap:15px;margin-bottom:29px}
+.check-list li{display:flex;gap:11px;align-items:flex-start;font-size:14px;font-weight:600}
+.check{flex-shrink:0;width:22px;height:22px;display:grid;place-items:center;border-radius:50%;background:#e3f7ee;color:#0c9866;font-size:12px}
+/* Portfolio */
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:21px}
+.project{border:1px solid var(--line);border-radius:19px;overflow:hidden;background:#fff;transition:.25s}
+.project:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.project-preview{height:205px;padding:20px;background:#f0f4fc;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.preview-store{width:100%;height:100%;background:#fff;border-radius:9px;box-shadow:0 10px 30px #1c376d14;padding:13px;position:relative}
+.preview-head{display:flex;justify-content:space-between;align-items:center;font-size:8px;font-weight:800}
+.preview-head span:last-child{color:#356dff}
+.preview-banner{margin-top:13px;height:90px;border-radius:6px;background:linear-gradient(110deg,#0e1e3a,#2d5792);color:white;padding:13px}
+.preview-banner h4{font-size:15px;max-width:120px;margin-bottom:7px}
+.preview-banner small{font-size:7px;color:#c7dcff}
+.preview-items{display:flex;gap:7px;margin-top:9px}
+.preview-items span{height:21px;flex:1;background:#eaf0fa;border-radius:4px}
+.preview-food{background:#f9efe0}
+.preview-food .preview-banner{background:linear-gradient(120deg,#8a421e,#d99a56)}
+.preview-agency{background:#e9f6f3}
+.preview-agency .preview-banner{background:linear-gradient(120deg,#124c48,#27887c)}
+.project-info{padding:22px}
+.project-label{font-size:10px;letter-spacing:1.3px;text-transform:uppercase;color:var(--blue);font-weight:800}
+.project-info h3{font-size:18px;margin:8px 0}
+.project-info p{font-size:13px;color:var(--muted)}
+/* Process */
+.process{background:var(--navy);color:white}
+.process .section-head h2{color:#fff}
+.process .section-head p{color:#b2c1d8}
+.process .eyebrow{color:#8bb9ff}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.process-card{padding:24px 21px;border:1px solid #ffffff1b;border-radius:17px;background:#ffffff08}
+.step-num{font-size:12px;letter-spacing:2px;font-weight:800;color:#8bb9ff;margin-bottom:26px}
+.process-card h3{font-size:18px;margin-bottom:11px}
+.process-card p{font-size:13px;color:#b3c2d9}
+/* Pricing */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+.price-card{position:relative;border:1px solid var(--line);border-radius:21px;padding:29px;background:white;display:flex;flex-direction:column}
+.price-card.featured{border:2px solid var(--blue);box-shadow:0 18px 50px #356dff18}
+.popular{position:absolute;top:-14px;right:19px;background:var(--blue);color:white;border-radius:30px;padding:6px 12px;font-size:10px;font-weight:800;letter-spacing:.5px}
+.plan-label{font-size:12px;color:var(--blue);font-weight:800;text-transform:uppercase;letter-spacing:1.4px}
+.price-card h3{font-size:24px;margin:9px 0}
+.price-card>p{font-size:13px;color:var(--muted);min-height:46px}
+.price{font-family:Manrope,sans-serif;font-size:38px;font-weight:800;color:var(--navy);margin:22px 0 4px;letter-spacing:-1.5px}
+.price small{font-family:"DM Sans",sans-serif;font-size:12px;letter-spacing:0;color:var(--muted);font-weight:500}
+.price-caption{font-size:11px;color:#8a97aa;margin-bottom:20px}
+.price-features{list-style:none;display:grid;gap:13px;margin:22px 0 27px;flex:1}
+.price-features li{display:flex;gap:10px;font-size:13px;color:#526078}
+.price-features li:before{content:"✓";color:var(--green);font-weight:800}
+.price-card .btn{width:100%}
+.price-note{font-size:12px;color:var(--muted);margin-top:28px;text-align:center}
+/* Payment */
+.payment-panel{border:1px solid #dce7fb;background:linear-gradient(130deg,#f8faff,#eef4ff);border-radius:22px;padding:34px;display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}
+.payment-panel h3{font-size:25px;margin-bottom:11px}
+.payment-panel p{font-size:14px;color:var(--muted)}
+.payment-method{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid #e4eaf4;border-radius:15px;padding:18px}
+.payment-logo{width:49px;height:49px;border-radius:13px;background:#e2f8ed;color:#078652;display:grid;place-items:center;font-weight:800;font-size:12px}
+.payment-method small{display:block;font-size:11px;color:var(--muted)}
+.payment-method strong{display:block;font-size:17px;color:var(--navy);letter-spacing:.3px}
+.copy-btn{margin-left:auto;border:1px solid #dfe6f0;border-radius:9px;padding:8px 11px;background:white;cursor:pointer;color:var(--blue);font-size:12px;font-weight:800}
+.payment-rules{display:flex;gap:12px;margin-top:18px}
+.rule{flex:1;border-radius:12px;background:#fff;padding:13px}
+.rule strong{display:block;font-size:17px;color:var(--navy)}
+.rule span{font-size:11px;color:var(--muted)}
+/* Order */
+.order-section{background:var(--soft)}
+.order-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:45px;align-items:start}
+.order-copy h2{font-size:clamp(31px,4vw,43px);margin-bottom:17px}
+.order-copy>p{color:var(--muted);margin-bottom:25px}
+.order-benefit{display:flex;gap:12px;margin-top:19px;align-items:flex-start}
+.order-benefit .check{margin-top:2px}
+.order-benefit strong{font-size:14px;display:block}
+.order-benefit small{font-size:12px;color:var(--muted)}
+.order-form{background:white;border:1px solid var(--line);border-radius:22px;padding:30px;box-shadow:0 15px 45px #102b5210}
+.form-heading{margin-bottom:23px}
+.form-heading h3{font-size:23px;margin-bottom:7px}
+.form-heading p{font-size:13px;color:var(--muted)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:17px}
+.field{display:flex;flex-direction:column;gap:7px}
+.field.full{grid-column:1/-1}
+.field label{font-size:12px;font-weight:800;color:#34435a}
+.field input,.field select,.field textarea{width:100%;border:1px solid #dce3ed;border-radius:10px;padding:12px 13px;background:#fff;outline:none;color:var(--ink);font-size:13px;transition:.2s}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px #356dff15}
+.field textarea{min-height:100px;resize:vertical}
+.form-submit{width:100%;margin-top:20px}
+.form-privacy{text-align:center;font-size:11px;color:#8a97aa;margin-top:12px}
+.advance-note{background:#f0f6ff;border:1px solid #dce8ff;border-radius:10px;padding:12px;font-size:12px;color:#4c6387;margin-top:17px}
+/* FAQ */
+.faq-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:60px}
+.faq-list{display:grid;gap:12px}
+details{border:1px solid var(--line);border-radius:13px;padding:17px 19px;background:white}
+summary{cursor:pointer;font-weight:700;font-size:14px;list-style:none;display:flex;justify-content:space-between;gap:15px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";font-size:19px;color:var(--blue);line-height:1}
+details[open] summary:after{content:"−"}
+details p{color:var(--muted);font-size:13px;padding-top:12px}
+/* CTA & footer */
+.cta{padding:72px 0;background:linear-gradient(120deg,#10203e,#194780);color:white;text-align:center;position:relative;overflow:hidden}
+.cta:before{content:"";position:absolute;width:380px;height:380px;border:1px solid #ffffff18;border-radius:50%;top:-240px;left:calc(50% - 190px)}
+.cta h2{position:relative;font-size:clamp(30px,4vw,43px);margin-bottom:15px}
+.cta p{position:relative;color:#c4d5ef;margin:0 auto 25px;max-width:560px}
+.cta .btn{position:relative}
+footer{background:#081329;color:white;padding:50px 0 23px}
+.footer-grid{display:grid;grid-template-columns:1.4fr .8fr .8fr;gap:50px;padding-bottom:38px}
+.footer-brand p{font-size:13px;color:#a4b2c9;max-width:320px;margin-top:17px}
+.footer-col h4{font-size:13px;margin-bottom:16px}
+.footer-col a{display:block;color:#a4b2c9;font-size:13px;margin:9px 0}
+.footer-col a:hover{color:white}
+.footer-bottom{border-top:1px solid #ffffff1a;padding-top:20px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;color:#8494ad;font-size:11px}
+.whatsapp-float{position:fixed;right:22px;bottom:22px;z-index:90;width:56px;height:56px;border-radius:50%;background:#19b978;color:#fff;display:grid;place-items:center;box-shadow:0 8px 25px #0b9c5b55;transition:.2s}
+.whatsapp-float:hover{transform:translateY(-4px)}
+.whatsapp-float svg{width:27px;height:27px;fill:currentColor}
+.toast{position:fixed;left:50%;bottom:25px;transform:translate(-50%,20px);background:var(--navy);color:white;border-radius:10px;padding:12px 18px;font-size:13px;z-index:200;opacity:0;pointer-events:none;transition:.25s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:900px){
+ .nav-links{gap:16px}.hero-grid{gap:35px}.hero h1{font-size:52px}
+ .services-grid,.portfolio-grid{grid-template-columns:repeat(2,1fr)}
+ .about-grid{gap:35px}.process-grid{grid-template-columns:repeat(2,1fr)}
+ .order-grid{gap:25px}.faq-grid{gap:30px}
+}
+@media(max-width:700px){
+ .container{width:min(100% - 30px,560px)}
+ .section{padding:70px 0}
+ .nav{height:69px}.brand{font-size:18px}.brand-icon{width:38px;height:38px}
+ .menu-btn{display:block}.nav>.btn{display:none}
+ .nav-links{display:none;position:absolute;top:68px;left:0;right:0;padding:18px 22px 23px;background:white;border-bottom:1px solid var(--line);box-shadow:0 15px 25px #142a4b0c;align-items:stretch;gap:0;flex-direction:column}
+ .nav-links.open{display:flex}.nav-links a{padding:12px 0;border-bottom:1px solid #f0f2f7}
+ .hero{padding:58px 0 55px}.hero-grid{grid-template-columns:1fr;gap:45px}
+ .hero h1{font-size:clamp(42px,11vw,58px);letter-spacing:-2px}
+ .hero-copy{font-size:15px}.hero-visual{margin:0 9px}
+ .float-note.one{left:-8px;bottom:22px}.float-note.two{right:-7px;top:28px}
+ .dash-body{padding:17px}.dash-hero{padding:22px 17px}.dash-hero h3{font-size:21px}
+ .stats-grid{grid-template-columns:repeat(2,1fr)}
+ .stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+ .services-grid,.portfolio-grid{grid-template-columns:1fr}
+ .service{padding:24px}.about-grid{grid-template-columns:1fr}
+ .about-visual{min-height:275px}.about-symbol .big-ag{font-size:80px}
+ .process-grid{grid-template-columns:1fr 1fr;gap:12px}.process-card{padding:19px 15px}
+ .pricing-grid{grid-template-columns:1fr;gap:25px}.price-card{padding:25px}
+ .payment-panel{grid-template-columns:1fr;padding:23px;gap:22px}
+ .payment-method{padding:13px;gap:10px}.payment-method strong{font-size:14px}
+ .copy-btn{padding:8px;font-size:11px}
+ .order-grid,.faq-grid{grid-template-columns:1fr;gap:30px}
+ .order-form{padding:22px 17px}.form-grid{grid-template-columns:1fr}
+ .field.full{grid-column:auto}
+ .footer-grid{grid-template-columns:1fr 1fr;gap:30px}
+ .footer-brand{grid-column:1/-1}
+ .section-head{margin-bottom:32px}
+}
+@media(max-width:390px){
+ .hero-actions .btn{width:100%}
+ .process-grid{grid-template-columns:1fr}
+ .rule{padding:10px}.rule strong{font-size:15px}
+ .footer-grid{grid-template-columns:1fr}
+ .footer-brand{grid-column:auto}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="container nav">
+    <a href="#home" class="brand" aria-label="AG Developers home">
+      <span class="brand-icon">AG</span>
+      <span>AG Developers<small>DIGITAL STUDIO</small></span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#work">Our Approach</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#order">Contact</a>
+    </nav>
+
+    <a class="btn btn-primary" href="#order">Start a Project ↗</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <div class="pill"><span class="pulse"></span> YOUR IDEAS, BUILT FOR THE WEB</div>
+      <h1>We build websites that make your business <span>stand out.</span></h1>
+      <p class="hero-copy">Professional, modern and responsive websites designed to help businesses look credible, connect with customers and grow online.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#order">Discuss Your Project ↗</a>
+        <a class="btn btn-outline" href="#services">Explore Services ↓</a>
+      </div>
+      <div class="trust-row">
+        <div class="trust-icons"><span>W</span><span>UI</span><span>AG</span></div>
+        <div><strong>Designed around your goals</strong><span>Clear communication. Thoughtful design.</span></div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="float-note two"><span class="note-icon">✓</span><strong>Mobile-ready</strong><small>Designed for every screen</small></div>
+      <div class="dashboard">
+        <div class="dash-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span><div class="dash-url">yourbusiness.com</div></div>
+        <div class="dash-body">
+          <div class="dash-nav"><span class="dash-logo">YOUR BRAND.</span><div class="dash-links"><span>Home</span><span>Services</span><span>Contact</span></div></div>
+          <div class="dash-hero">
+            <div class="dash-tag">A BETTER DIGITAL PRESENCE</div>
+            <h3>Your next chapter starts here.</h3>
+            <p>Thoughtful design. Clear messaging. A website made for your customers.</p>
+            <span class="dash-mini-btn">Explore more ↗</span>
+          </div>
+          <div class="dash-bottom">
+            <div class="dash-card"><div class="dash-card-icon"></div><strong>Modern Design</strong><small>Made for your brand</small></div>
+            <div class="dash-card"><div class="dash-card-icon"></div><strong>Responsive</strong><small>Works across screens</small></div>
+            <div class="dash-card"><div class="dash-card-icon"></div><strong>Built with Care</strong><small>Details that matter</small></div>
+          </div>
+        </div>
+      </div>
+      <div class="float-note one"><span class="note-icon">✦</span><strong>Clean & professional</strong><small>A polished first impression</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="container stats-grid">
+    <div class="stat"><strong>01 — 01</strong><span>One-to-one communication</span></div>
+    <div class="stat"><strong>Responsive</strong><span>Desktop, tablet & mobile</span></div>
+    <div class="stat"><strong>Custom</strong><span>Designed for your needs</span></div>
+    <div class="stat"><strong>Transparent</strong><span>Clear scope and pricing</span></div>
+  </div>
+</section>
+
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">What we do</span>
+      <h2>Digital solutions for ambitious businesses.</h2>
+      <p>Whether you're starting from scratch or improving your online presence, we help turn your ideas into a professional digital experience.</p>
+    </div>
+
+    <div class="services-grid">
+      <article class="service">
+        <div class="service-icon">⌘</div>
+        <h3>Business Websites</h3>
+        <p>Build trust with a polished website that introduces your business, explains your services and makes it easy for customers to contact you.</p>
+        <a href="#order">Discuss a business website ↗</a>
+      </article>
+      <article class="service">
+        <div class="service-icon">▦</div>
+        <h3>Landing Pages</h3>
+        <p>Focused, attractive pages for a service, product, promotion or campaign, with a clear message and call to action.</p>
+        <a href="#order">Plan a landing page ↗</a>
+      </article>
+      <article class="service">
+        <div class="service-icon">◇</div>
+        <h3>Portfolio Websites</h3>
+        <p>Showcase your work, skills, achievements and projects with a personal website that presents you professionally.</p>
+        <a href="#order">Build your portfolio ↗</a>
+      </article>
+      <article class="service">
+        <div class="service-icon">▤</div>
+        <h3>Shop & Product Pages</h3>
+        <p>Present products, descriptions and contact options in a clear, organized layout designed around your customers.</p>
+        <a href="#order">Discuss a product site ↗</a>
+      </article>
+      <article class="service">
+        <div class="service-icon">✧</div>
+        <h3>Website Redesign</h3>
+        <p>Give an existing website a fresh look with better organization, improved readability and a consistent visual identity.</p>
+        <a href="#order">Improve your website ↗</a>
+      </article>
+      <article class="service">
+        <div class="service-icon">⚙</div>
+        <h3>Custom Web Projects</h3>
+        <p>Have a specific idea? Tell us what you need and we'll discuss the features, scope and a practical approach.</p>
+        <a href="#order">Share your idea ↗</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section about-band" id="about">
+  <div class="container about-grid">
+    <div class="about-visual">
+      <div class="about-symbol">
+        <div class="big-ag">AG.</div>
+        <p>IDEAS INTO EXPERIENCES</p>
+      </div>
+    </div>
+    <div class="about-copy">
+      <span class="eyebrow">About AG Developers</span>
+      <h2>Good design should feel simple.</h2>
+      <p>We believe a business website should do more than look attractive. It should communicate clearly, work smoothly on different screens and help visitors understand what you offer.</p>
+      <ul class="check-list">
+        <li><span class="check">✓</span><span>Clean layouts with readable typography and consistent colours.</span></li>
+        <li><span class="check">✓</span><span>Responsive pages designed for mobile and desktop users.</span></li>
+        <li><span class="check">✓</span><span>Clear project scope, pricing discussions and communication.</span></li>
+        <li><span class="check">✓</span><span>Practical deployment guidance for supported hosting platforms.</span></li>
+      </ul>
+      <a class="btn btn-primary" href="#order">Let's Talk About Your Idea ↗</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="work">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Design direction</span>
+      <h2>Every brand deserves its own look.</h2>
+      <p>Here are illustrative design concepts showing the kind of visual direction your project could take. These are concept previews, not claims of completed client work.</p>
+    </div>
+
+    <div class="portfolio-grid">
+      <article class="project">
+        <div class="project-preview">
+          <div class="preview-store">
+            <div class="preview-head"><span>NORTH & CO.</span><span>COLLECTION ↗</span></div>
+            <div class="preview-banner"><h4>Made for everyday living.</h4><small>Thoughtfully selected essentials.</small></div>
+            <div class="preview-items"><span></span><span></span><span></span></div>
+          </div>
+        </div>
+        <div class="project-info"><span class="project-label">Concept 01 · Retail</span><h3>Modern Storefront</h3><p>A clean product-focused layout for shops and growing brands.</p></div>
+      </article>
+
+      <article class="project">
+        <div class="project-preview preview-food">
+          <div class="preview-store">
+            <div class="preview-head"><span>THE DAILY TABLE</span><span>MENU</span></div>
+            <div class="preview-banner"><h4>Good food. Great moments.</h4><small>Discover our menu and favourites.</small></div>
+            <div class="preview-items"><span></span><span></span><span></span></div>
+          </div>
+        </div>
+        <div class="project-info"><span class="project-label">Concept 02 · Restaurant</span><h3>Restaurant Website</h3><p>A welcoming online presence for menus, location and enquiries.</p></div>
+      </article>
+
+      <article class="project">
+        <div class="project-preview preview-agency">
+          <div class="preview-store">
+            <div class="preview-head"><span>STUDIO FORM</span><span>ABOUT</span></div>
+            <div class="preview-banner"><h4>Ideas shaped with purpose.</h4><small>Creative work for modern businesses.</small></div>
+            <div class="preview-items"><span></span><span></span><span></span></div>
+          </div>
+        </div>
+        <div class="project-info"><span class="project-label">Concept 03 · Creative</span><h3>Agency & Portfolio</h3><p>A refined layout to communicate expertise and showcase work.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section process">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">How it works</span>
+      <h2>A straightforward process, from idea to launch.</h2>
+      <p>You'll know what we're building, what it costs and what happens next before the project begins.</p>
+    </div>
+    <div class="process-grid">
+      <article class="process-card"><div class="step-num">STEP 01</div><h3>Tell us your idea</h3><p>Share your business, goals, preferred style and the features you need.</p></article>
+      <article class="process-card"><div class="step-num">STEP 02</div><h3>Confirm the plan</h3><p>We discuss scope, timeline, price and the required advance payment.</p></article>
+      <article class="process-card"><div class="step-num">STEP 03</div><h3>Design & build</h3><p>Work begins after the agreed terms and advance payment are confirmed.</p></article>
+      <article class="process-card"><div class="step-num">STEP 04</div><h3>Review & launch</h3><p>Review the agreed work, request included changes and plan deployment.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Simple pricing</span>
+      <h2>A starting point for your next project.</h2>
+      <p>Choose a starting package. Final pricing depends on the agreed features, content, revisions and project requirements.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <article class="price-card">
+        <span class="plan-label">Starter</span>
+        <h3>Essential Website</h3>
+        <p>For a simple online presence with the essentials.</p>
+        <div class="price">Rs 1,000 <small>/ starting price</small></div>
+        <div class="price-caption">Final scope confirmed before payment.</div>
+        <div style="height:1px;background:var(--line)"></div>
+        <ul class="price-features">
+          <li>Simple single-page website</li>
+          <li>Responsive layout</li>
+          <li>Business information and contact section</li>
+          <li>Basic visual styling</li>
+          <li>Agreed delivery scope</li>
+        </ul>
+        <a class="btn btn-outline" href="#order" data-package="Starter Website">Choose Starter</a>
+      </article>
+
+      <article class="price-card featured">
+        <span class="popular">POPULAR CHOICE</span>
+        <span class="plan-label">Business</span>
+        <h3>Business Website</h3>
+        <p>For businesses needing more sections and a stronger presence.</p>
+        <div class="price">Custom <small>/ quote</small></div>
+        <div class="price-caption">Price based on pages and features.</div>
+        <div style="height:1px;background:var(--line)"></div>
+        <ul class="price-features">
+          <li>Multiple sections or pages</li>
+          <li>Custom colour and typography system</li>
+          <li>Services and business information</li>
+          <li>Contact and enquiry options</li>
+          <li>Responsive design</li>
+        </ul>
+        <a class="btn btn-primary" href="#order" data-package="Business Website">Discuss Business Plan ↗</a>
+      </article>
+
+      <article class="price-card">
+        <span class="plan-label">Advanced</span>
+        <h3>Custom Project</h3>
+        <p>For specialized layouts, extra functionality or unique ideas.</p>
+        <div class="price">Custom <small>/ quote</small></div>
+        <div class="price-caption">Scope and cost agreed first.</div>
+        <div style="height:1px;background:var(--line)"></div>
+        <ul class="price-features">
+          <li>Project-specific design</li>
+          <li>Discuss custom functionality</li>
+          <li>Tailored page structure</li>
+          <li>Feature and integration planning</li>
+          <li>Agreed project deliverables</li>
+        </ul>
+        <a class="btn btn-outline" href="#order" data-package="Custom Project">Discuss Custom Work</a>
+      </article>
+    </div>
+    <p class="price-note">Domain purchases, paid hosting, third-party services and features outside the agreed scope may cost extra. No work begins until the scope and payment terms are confirmed.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="payment-panel">
+      <div>
+        <span class="eyebrow">Payment information</span>
+        <h3>Clear terms. No surprises.</h3>
+        <p>Discuss your project first. Once the price and scope are agreed, pay the applicable advance using Easypaisa. The advance counts toward the agreed total project price.</p>
+        <div class="payment-rules">
+          <div class="rule"><strong>Rs 300</strong><span>First order advance</span></div>
+          <div class="rule"><strong>Rs 500+</strong><span>Minimum for later orders</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="payment-method">
+          <div class="payment-logo">EP</div>
+          <div><small>Easypaisa payment number</small><strong id="paymentNumber">03152311498</strong></div>
+          <button type="button" class="copy-btn" id="copyPayment">Copy</button>
+        </div>
+        <p style="font-size:12px;margin-top:12px">Please confirm the recipient name and payment details in Easypaisa before sending money. Share payment confirmation with us after paying.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section order-section" id="order">
+  <div class="container order-grid">
+    <div class="order-copy">
+      <span class="eyebrow">Start a project</span>
+      <h2>Let's make your idea real.</h2>
+      <p>Tell us a little about your business and what you want your website to do. We'll follow up on WhatsApp to discuss the requirements, price and timeline.</p>
+
+      <div class="order-benefit"><span class="check">✓</span><div><strong>Personal communication</strong><small>Discuss the details directly over WhatsApp.</small></div></div>
+      <div class="order-benefit"><span class="check">✓</span><div><strong>Clear project scope</strong><small>Confirm what's included before work starts.</small></div></div>
+      <div class="order-benefit"><span class="check">✓</span><div><strong>Upfront payment terms</strong><small>Know the agreed price and advance before paying.</small></div></div>
+      <div class="order-benefit"><span class="check">✓</span><div><strong>Payment number kept separate</strong><small>Easypaisa: 03152311498 · WhatsApp: 03138230176</small></div></div>
+    </div>
+
+    <form class="order-form" id="orderForm">
+      <div class="form-heading">
+        <h3>Project enquiry</h3>
+        <p>Complete the details and continue on WhatsApp.</p>
+      </div>
+      <div class="form-grid">
+        <div class="field">
+          <label for="customerName">Your name *</label>
+          <input id="customerName" name="customerName" placeholder="Enter your name" required maxlength="100">
+        </div>
+        <div class="field">
+          <label for="customerPhone">Your contact number</label>
+          <input id="customerPhone" name="customerPhone" type="tel" placeholder="03xx xxxxxxx" maxlength="30">
+        </div>
+        <div class="field full">
+          <label for="businessName">Business or brand name *</label>
+          <input id="businessName" name="businessName" placeholder="Enter your business name" required maxlength="120">
+        </div>
+        <div class="field">
+          <label for="websiteType">Website type *</label>
+          <select id="websiteType" name="websiteType" required>
+            <option value="">Select a type</option>
+            <option>Business website</option>
+            <option>Online shop / product website</option>
+            <option>Portfolio website</option>
+            <option>Restaurant website</option>
+            <option>Landing page</option>
+            <option>Website redesign</option>
+            <option>Custom project</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="package">Package *</label>
+          <select id="package" name="package" required>
+            <option value="">Choose a package</option>
+            <option>Starter Website — Rs 1,000 starting price</option>
+            <option>Business Website — custom quote</option>
+            <option>Custom Project — custom quote</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label for="budget">Estimated budget</label>
+          <select id="budget" name="budget">
+            <option>Not decided yet</option>
+            <option>Rs 1,000–3,000</option>
+            <option>Rs 3,000–5,000</option>
+            <option>Rs 5,000–10,000</option>
+            <option>Rs 10,000+</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label for="details">Describe your idea *</label>
+          <textarea id="details" name="details" placeholder="What does your website need? Mention pages, features, colours or examples..." required maxlength="1500"></textarea>
+        </div>
+      </div>
+      <div class="advance-note"><strong>Advance policy:</strong> Rs 300 for your first order; minimum Rs 500 for subsequent orders. Final price, scope and payment arrangements will be confirmed with you first. The advance is part of the agreed total price.</div>
+      <button class="btn btn-primary form-submit" type="submit">Send Enquiry on WhatsApp ↗</button>
+      <p class="form-privacy">This form opens WhatsApp with your enquiry. It does not collect payments on this website.</p>
+    </form>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="container faq-grid">
+    <div class="section-head">
+      <span class="eyebrow">FAQs</span>
+      <h2>Questions, answered.</h2>
+      <p>Here are some useful details before you get started.</p>
+    </div>
+    <div class="faq-list">
+      <details><summary>How much does a website cost?</summary><p>A simple starter website begins at Rs 1,000. Larger projects are quoted after discussing the pages, design and functionality. The final scope and price are confirmed before work begins.</p></details>
+      <details><summary>How do I pay the advance?</summary><p>The current Easypaisa payment number is 03152311498. Confirm the recipient and payment instructions before sending money. The advance is deducted from the agreed total price.</p></details>
+      <details><summary>What is the advance policy?</summary><p>The first order requires Rs 300 in advance. For later orders, the minimum advance is Rs 500. Any different arrangement must be agreed upon before work starts.</p></details>
+      <details><summary>Can you make my website mobile-friendly?</summary><p>Responsive design is included in the packages where specified. We confirm the exact deliverables for your selected project before starting.</p></details>
+      <details><summary>Can you publish the website online?</summary><p>We can discuss deployment options, including Cloudflare Pages for suitable static websites. Domain registration, paid services and other third-party charges are separate unless expressly included.</p></details>
+      <details><summary>When will my website be ready?</summary><p>Timing depends on the scope, content, required features and feedback. We'll discuss a realistic timeline before accepting the project.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <h2>Your business deserves a better website.</h2>
+    <p>Tell us what you're planning. We'll discuss your requirements and find a practical way to bring your idea online.</p>
+    <a href="#order" class="btn btn-white">Start Your Project ↗</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#home" class="brand"><span class="brand-icon">AG</span><span>AG Developers<small>DIGITAL STUDIO</small></span></a>
+        <p>Thoughtful web design for businesses, brands and ideas. Professional presentation, clear communication and websites built around your goals.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="#services">Our Services</a>
+        <a href="#about">About Us</a>
+        <a href="#work">Design Concepts</a>
+        <a href="#pricing">Pricing</a>
+      </div>
+      <div class="footer-col">
+        <h4>Get in touch</h4>
+        <a href="#order">Start a Project</a>
+        <a href="https://wa.me/923138230176" target="_blank" rel="noopener noreferrer">WhatsApp Us ↗</a>
+        <a href="#faq">Frequently Asked Questions</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> AG Developers. All rights reserved.</span>
+      <span>Designed with clarity and purpose.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/923138230176" target="_blank" rel="noopener noreferrer" aria-label="Chat with AG Developers on WhatsApp">
+  <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16.02 3C8.85 3 3.02 8.8 3.02 15.94c0 2.28.6 4.51 1.75 6.48L3 29l6.78-1.77a13.1 13.1 0 0 0 6.24 1.58h.01c7.16 0 13-5.8 13-12.94 0-3.46-1.35-6.72-3.81-9.17A12.93 12.93 0 0 0 16.02 3zm0 23.6h-.01a10.9 10.9 0 0 1-5.55-1.51l-.4-.24-4.02 1.05 1.07-3.9-.26-.41a10.72 10.72 0 0 1-1.65-5.65c0-5.94 4.86-10.78 10.83-10.78 2.89 0 5.61 1.12 7.65 3.16a10.7 10.7 0 0 1 3.17 7.63c0 5.94-4.86 10.78-10.83 10.78zm5.95-8.07c-.33-.16-1.93-.95-2.23-1.06-.3-.11-.52-.16-.74.16-.22.33-.85 1.06-1.04 1.28-.19.22-.38.25-.71.08-.33-.16-1.4-.51-2.66-1.63-.98-.87-1.64-1.94-1.83-2.27-.19-.33-.02-.5.14-.66.15-.14.33-.38.49-.57.16-.19.22-.33.33-.55.11-.22.05-.41-.03-.57-.08-.16-.74-1.77-1.01-2.42-.27-.63-.54-.54-.74-.55h-.63c-.22 0-.57.08-.87.41-.3.33-1.14 1.11-1.14 2.71s1.17 3.14 1.34 3.36c.16.22 2.3 3.51 5.57 4.92.78.34 1.39.54 1.86.69.78.25 1.49.21 2.05.13.63-.09 1.93-.79 2.2-1.55.27-.76.27-1.41.19-1.55-.08-.14-.3-.22-.63-.38z"/></svg>
+</a>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const WHATSAPP_NUMBER = "923138230176";
+const EASYPaisa_NUMBER = "03152311498";
+
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", () => {
+  const isOpen = navLinks.classList.toggle("open");
+  menuBtn.setAttribute("aria-expanded", String(isOpen));
+  menuBtn.textContent = isOpen ? "✕" : "☰";
+});
+
+navLinks.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("open");
+    menuBtn.setAttribute("aria-expanded", "false");
+    menuBtn.textContent = "☰";
+  });
+});
+
+document.querySelectorAll("[data-package]").forEach(button => {
+  button.addEventListener("click", () => {
+    const value = button.dataset.package;
+    const select = document.getElementById("package");
+    if (value === "Starter Website") select.selectedIndex = 1;
+    else if (value === "Business Website") select.selectedIndex = 2;
+    else if (value === "Custom Project") select.selectedIndex = 3;
+  });
+});
+
+const toast = document.getElementById("toast");
+let toastTimer;
+
+function showToast(message) {
+  toast.textContent = message;
+  toast.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove("show"), 2400);
+}
+
+document.getElementById("copyPayment").addEventListener("click", async () => {
+  try {
+    await navigator.clipboard.writeText(EASYPaisa_NUMBER);
+    showToast("Easypaisa number copied!");
+  } catch (error) {
+    const temp = document.createElement("textarea");
+    temp.value = EASYPaisa_NUMBER;
+    temp.style.position = "fixed";
+    temp.style.opacity = "0";
+    document.body.appendChild(temp);
+    temp.select();
+    const copied = document.execCommand("copy");
+    temp.remove();
+    showToast(copied ? "Easypaisa number copied!" : "Easypaisa: " + EASYPaisa_NUMBER);
+  }
+});
+
+document.getElementById("orderForm").addEventListener("submit", event => {
+  event.preventDefault();
+
+  const form = event.currentTarget;
+  if (!form.reportValidity()) return;
+
+  const data = new FormData(form);
+  const message = [
+    "Hello AG Developers! I'd like to discuss a website project.",
+    "",
+    "CUSTOMER DETAILS",
+    "Name: " + data.get("customerName"),
+    "Contact: " + (data.get("customerPhone") || "Not provided"),
+    "Business / Brand: " + data.get("businessName"),
+    "",
+    "PROJECT DETAILS",
+    "Website Type: " + data.get("websiteType"),
+    "Package: " + data.get("package"),
+    "Estimated Budget: " + data.get("budget"),
+    "Requirements: " + data.get("details"),
+    "",
+    "PAYMENT POLICY",
+    "Easypaisa Number: " + EASYPaisa_NUMBER,
+    "First order advance: Rs 300",
+    "Subsequent order advance: minimum Rs 500",
+    "Please confirm the total price, scope and payment instructions before I pay."
+  ].join("\n");
+
+  const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
+  window.open(url, "_blank", "noopener,noreferrer");
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
